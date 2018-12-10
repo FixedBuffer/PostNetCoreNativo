@@ -6,18 +6,7 @@ namespace PostNetCoreNativo
     class Program
     {
         [DllImport(@"EjemploNativo.dll",EntryPoint = "MetodoNativo")]
-        public static extern void Windows_MetodoNativo();
-        [DllImport(@"EjemploNativo.so", EntryPoint = "MetodoNativo")]
-        public static extern void NoWindows_MetodoNativo();
-
-
-        static void MetodoNativo()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                Windows_MetodoNativo();
-            else
-                NoWindows_MetodoNativo();
-        }
+        public static extern void MetodoNativo();    
 
         static void Main(string[] args)
         {
