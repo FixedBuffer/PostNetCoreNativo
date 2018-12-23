@@ -12,7 +12,9 @@ extern "C" {
 #  define MODULE_API
 #endif
 
-MODULE_API void MetodoNativo();
+MODULE_API void GetStringMessage(char* str, int strlen);
+
+MODULE_API int Suma(int A, int B);
 
 #ifdef __cplusplus
 }
