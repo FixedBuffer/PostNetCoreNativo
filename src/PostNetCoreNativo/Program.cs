@@ -23,7 +23,7 @@ namespace PostNetCoreNativo
 
         [DllImport(LibreriaNoWindows, EntryPoint = "Suma")]
         public static extern int Suma_NoWindows(int A, int B);
-        
+
         //Obtenemos el mensaje desde C++
         static string GetStringMessageNativo()
         {
@@ -40,23 +40,24 @@ namespace PostNetCoreNativo
         }
 
 
-        static int SumaNativo (int A, int B)
+        static int SumaNativo(int A, int B)
         {
             //En funcion de la plataforma, llamamos a una funcion o a otra, ya que la extension cambia
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-               return Suma_Windows(A,B);
+                return Suma_Windows(A, B);
             else
-               return Suma_NoWindows(A, B);
+                return Suma_NoWindows(A, B);
 
         }
+
         static void Main(string[] args)
         {
             //Obtenemos el sistema operativo sobre el que corre la aplicacion
             string OS = RuntimeInformation.OSDescription;
+            int sumando1 = 123, sumando2 = 3245;
             Console.WriteLine($"Mensaje escrito en C# sobre {OS}");
             Console.WriteLine(GetStringMessageNativo().ToString());
-            Console.WriteLine($"Suma desde codigo nativo de los números 4 y 5");
-            Console.WriteLine(SumaNativo(4,5));
+            Console.WriteLine($"Suma desde codigo nativo '{sumando1} + {sumando2} = {SumaNativo(sumando1, sumando2)}'");
 
             Console.Read();
         }

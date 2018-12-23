@@ -15,5 +15,5 @@ void GetStringMessage(char* str, int strlen) {
 }
 
 int Suma(int A, int B) {
-    return A + B;
+	return A + B;
 }
