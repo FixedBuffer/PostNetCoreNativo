@@ -2,7 +2,6 @@
 #include <iostream>
 #include <algorithm>
 
-
 void GetStringMessage(char* str, int strlen) {
 	//Definimos el mensaje
 	std::string result = "Mensaje generado desde C++";
