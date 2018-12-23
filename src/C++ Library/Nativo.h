@@ -4,7 +4,6 @@ extern "C" {
 
 //Utilizamos directivas de preprocesado para definir la macro de la API
 //Esto hay que hacerlo porque en Windows y en NoWindows se declaran diferente
-
 #ifdef _WIN32
 #  ifdef MODULE_API_EXPORTS
 #    define MODULE_API __declspec(dllexport) 
