@@ -8,21 +8,28 @@ namespace PostNetCoreNativo
     {
         //====================CONSTANTES====================
         const string LibreriaWindows = "EjemploNativo.dll";
-        const string LibreriaNoWindows = "EjemploNativo.so";
+        const string LibreriaLinux = "EjemploNativo.so";
+        const string LibreriaMacOS = "EjemploNativo.dylib";
         const int STRING_MAX_LENGHT = 1024;
 
         //====================DECLARACION DE LLAMADAS NATIVAS===================================
-        [DllImport(LibreriaWindows,  EntryPoint = "GetStringMessage")]
+        [DllImport(LibreriaWindows, EntryPoint = "GetStringMessage")]
         public static extern void GetStringMessage_Windows(StringBuilder sb, int StringLenght);
 
-        [DllImport(LibreriaNoWindows, EntryPoint = "GetStringMessage")]
-        public static extern void GetStringMessage_NoWindows(StringBuilder sb, int StringLenght);
+        [DllImport(LibreriaLinux, EntryPoint = "GetStringMessage")]
+        public static extern void GetStringMessage_Linux(StringBuilder sb, int StringLenght);
+
+        [DllImport(LibreriaMacOS, EntryPoint = "GetStringMessage")]
+        public static extern void GetStringMessage_MacOS(StringBuilder sb, int StringLenght);
 
         [DllImport(LibreriaWindows, EntryPoint = "Suma")]
         public static extern int Suma_Windows(int A, int B);
 
-        [DllImport(LibreriaNoWindows, EntryPoint = "Suma")]
-        public static extern int Suma_NoWindows(int A, int B);
+        [DllImport(LibreriaLinux, EntryPoint = "Suma")]
+        public static extern int Suma_Linux(int A, int B);
+
+        [DllImport(LibreriaMacOS, EntryPoint = "Suma")]
+        public static extern int Suma_MacOS(int A, int B);
 
         //Obtenemos el mensaje desde C++
         static string GetStringMessageNativo()
@@ -33,8 +40,10 @@ namespace PostNetCoreNativo
             //En funcion de la plataforma, llamamos a una funcion o a otra, ya que la extension cambia
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 GetStringMessage_Windows(sb, STRING_MAX_LENGHT);
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                GetStringMessage_Linux(sb, STRING_MAX_LENGHT);
             else
-                GetStringMessage_NoWindows(sb, STRING_MAX_LENGHT);
+                GetStringMessage_MacOS(sb, STRING_MAX_LENGHT);
 
             return sb.ToString();
         }
@@ -45,8 +54,10 @@ namespace PostNetCoreNativo
             //En funcion de la plataforma, llamamos a una funcion o a otra, ya que la extension cambia
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 return Suma_Windows(A, B);
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                return Suma_Linux(A, B);
             else
-                return Suma_NoWindows(A, B);
+                return Suma_MacOS(A, B);
 
         }
 
