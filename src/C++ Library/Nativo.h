@@ -13,7 +13,6 @@ extern "C" {
 #else
 #  define MODULE_API
 #endif
-
 //Declaracion de los métodos nativos
 MODULE_API void GetStringMessage(char* str, int strlen);
 
