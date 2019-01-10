@@ -4,7 +4,7 @@
 
 void GetStringMessage(char* str, int strsize) {
 	//Comprobamos que el tamaño del buffer que nos indican en mayor que 0
-	if(strsize > 0) {
+	if (strsize > 0) {
 		//Definimos el mensaje
 		const char result[] = "Mensaje generado desde C++";
 		//Obtenemos cual va a ser la longitud maxima que podemos utilizar
@@ -13,7 +13,7 @@ void GetStringMessage(char* str, int strsize) {
 		std::copy(result, result + size, str);
 		//Indicamos el final de cadena
 		str[size] = '\0';
-  }	
+	}
 }
 
 int Suma(int a, int b) {
