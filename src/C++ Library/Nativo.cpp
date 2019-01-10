@@ -2,17 +2,20 @@
 #include <iostream>
 #include <algorithm>
 
-void GetStringMessage(char* str, int strlen) {
-	//Definimos el mensaje
-	std::string result = "Mensaje generado desde C++";
-	//Cortamos lo que sobre si el buffer que nos pasan es pequeño
-	result = result.substr(0, strlen);
-	//Copiamos el mensaje en el buffer de salida
-	std::copy(result.begin(), result.end(), str);
-	//Colocamos un '\0' en la ultima posición, ya que es el delimitador de strings nativas
-	str[std::min(strlen - 1, (int)result.size())] = '\0';
+void GetStringMessage(char* str, int strsize) {
+	//Comprobamos que el tamaño del buffer que nos indican en mayor que 0
+	if(strsize > 0) {
+		//Definimos el mensaje
+		const char result[] = "Mensaje generado desde C++";
+		//Obtenemos cual va a ser la longitud maxima que podemos utilizar
+		const auto size = std::min<int>(sizeof(result), strsize) - 1;
+		//Compiamos al buffer la cadena
+		std::copy(result, result + size, str);
+		//Indicamos el final de cadena
+		str[size] = '\0';
+  }	
 }
 
-int Suma(int A, int B) {
-	return A + B;
+int Suma(int a, int b) {
+	return a + b;
 }
