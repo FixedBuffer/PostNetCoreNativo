@@ -34,7 +34,7 @@ namespace PostNetCoreNativo
             string OS = RuntimeInformation.OSDescription;
             int sumando1 = 123, sumando2 = 3245;
             Console.WriteLine($"Mensaje escrito en C# sobre {OS}");
-            Console.WriteLine(GetStringMessage().ToString());
+            Console.WriteLine(GetStringMessage());
             Console.WriteLine($"Suma desde codigo nativo '{sumando1} + {sumando2} = {SumaNativo(sumando1, sumando2)}'");
 
             Console.Read();
