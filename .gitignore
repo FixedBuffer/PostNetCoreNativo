@@ -265,4 +265,9 @@ __pycache__/
 CMake*.txt
 *.cmake
 
+# Visual Studio Custom Config
+*.vcxproj*
+**/*.sln
+!PostNetCoreNativo.sln
+
 **/build
