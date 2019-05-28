@@ -260,4 +260,14 @@ paket-files/
 __pycache__/
 *.pyc
 
+# CMake
+**/CMakeFiles/*
+CMake*.txt
+*.cmake
+
+# Visual Studio Custom Config
+*.vcxproj*
+**/*.sln
+!PostNetCoreNativo.sln
+
 **/build
