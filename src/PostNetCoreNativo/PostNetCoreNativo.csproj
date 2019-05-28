@@ -10,4 +10,8 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy /y &quot;$(SolutionDir)\src\C++ Library\$(ConfigurationName)\EjemploNativo.dll&quot; $(TargetDir)" />
+  </Target>
 </Project>
