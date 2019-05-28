@@ -260,4 +260,9 @@ paket-files/
 __pycache__/
 *.pyc
 
+# CMake
+**/CMakeFiles/*
+CMake*.txt
+*.cmake
+
 **/build
